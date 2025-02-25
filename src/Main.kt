@@ -2,11 +2,11 @@
 //customer. If they are a residential customer you will accept their name and phone number. If they are a business
 // customer you will accept their business name, contact name, and phone number.
 
-fun customer(name: String, phone: Int): String {
+fun customer(name: String, phone: Long): String {
     return "Residential Customer: $name, $phone"
 }
 
-fun customer(businessName: String, businessContact: String, businessPhone: Int): String {
+fun customer(businessName: String, businessContact: String, businessPhone: Long): String {
     return "Business Customer: $businessName, Contact: $businessContact, Phone: $businessPhone"
 }
 
@@ -27,7 +27,7 @@ fun main() {
                 val businessContact = readlnOrNull().toString()
 
                 println("Please enter phone number: ")
-                val businessPhone  = readlnOrNull().toString().toInt()
+                val businessPhone  = readlnOrNull()?.toLongOrNull() ?: 0L
                 println("\nBusiness Contact details: \n${customer(businessName, businessContact, businessPhone)}")
 
             }
@@ -37,7 +37,7 @@ fun main() {
                 val name = readlnOrNull().toString()
 
                 println("Please enter your phone number:")
-                val phone = readlnOrNull()?.toIntOrNull() ?: 0
+                val phone = readlnOrNull()?.toLongOrNull() ?: 0L
                 println("\nResidential customer contact details: \n${customer(name, phone)}")
             }
 
